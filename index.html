@@ -1,0 +1,7 @@
+<canvas id=c><script>g=document.getElementById("c").getContext("webgl");a=35633
+S=(c)=>(g.shaderSource((s=g.createShader(a--)),c),g.compileShader(s),s)
+g.attachShader(p=g.createProgram(),S(`void main(){gl_Position=vec4(0.,0.,0.,1.);gl_PointSize=300.;}`))
+g.attachShader(p,S(`precision highp float;uniform float t;void main(){gl_FragColor=vec4(gl_FragCoord.xy/150.,cos(t),1.);}`))
+g.linkProgram(p);g.useProgram(p)
+d=(n)=>(g.uniform1f(g.getUniformLocation(p, "t"), n / 99),g.drawArrays(0, 0, 1),requestAnimationFrame(d))
+d()</script>
